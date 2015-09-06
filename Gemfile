@@ -11,6 +11,8 @@ gem 'spring', :group => :development
 gem 'pg'
 
 gem 'devise'
+gem 'active_model_serializers'
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
 end
