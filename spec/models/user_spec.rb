@@ -5,5 +5,8 @@ RSpec.describe User, type: :model do
   subject { @user }
 
   it { should respond_to(:email) }
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should respond_to(:password) }
+  it { should respond_to(:password_confirmation) }
+
+  it { should be_valid }
 end
