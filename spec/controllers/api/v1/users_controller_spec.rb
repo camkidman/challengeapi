@@ -21,14 +21,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
     context "when successfully created" do
 
       before(:each) do
-        @user_attributes = FactoryGirl.attributes_for :user
-        binding.pry
-        post 'create', { user: @user_attributes }, format: :json
+        @user_attributes = FactoryGirl.attributes_for(:user)
+        post :create, { "user" => @user_attributes }, format: :json
       end
 
       it "renders the JSON for the user we just created" do
         user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response[:user][:email]).to eql @user_attributes.email
+        expect(user_response[:user][:email]).to eql @user_attributes[:email]
       end
 
       it { should respond_with 201 }
@@ -50,7 +49,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
 
       it "should include the error of why it couldn't be created" do
         user_response = JSON.parse(response.body, symbolize_names: true)
-        expect(user_response[:user][:email]).to include "can't be blank"
+        expect(user_response[:errors][:email]).to include "can't be blank"
       end
 
 
