@@ -32,6 +32,6 @@ class Api::V1::ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:email, :password, :password_confirmation)
+    params.require(:challenge).permit(:email, :password, :password_confirmation, :user_id)
   end
 end
