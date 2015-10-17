@@ -2,7 +2,13 @@ class Api::V1::ChallengesController < ApplicationController
   respond_to :json
 
   def show
-    respond_with Challenge.find(params[:id])
+    challenge = Challenge.find(params[:id])
+    render json: challenge, status: 200, location: [:api, challenge]
+  end
+
+  def index
+    challenges = Challenge.all
+    render json: challenges, status: 200
   end
 
   def create
