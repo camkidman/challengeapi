@@ -42,11 +42,58 @@ RSpec.describe Api::V1::ChallengesController, type: :controller do
       end
 
       it "should render the JSON for the created challenge" do
-        challenge_response = JSON.parse(response.body, symbolize_names: true)
-        expect(challenge_response[:challenge][:description]).to eql @challenge_attributes["description"]
-        expect(challenge_response[:challenge][:title]).to eql @challenge_attributes["title"]
+        challenge_response = json_response
+        expect(challenge_response[:challenge][:description]).to eql @challenge_attributes[:description]
+        expect(challenge_response[:challenge][:title]).to eql @challenge_attributes[:title]
       end
     end
+  end
+
+  describe "PUT/PATCH #update" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @challenge = FactoryGirl.create(:challenge, user: @user)
+    end
+
+    context "when successfully updated" do
+
+      before(:each) do
+        patch :update, { user_id: @user.id, id: @challenge.id, challenge: { description: "Updated description" }}
+      end
+
+      it "should render the json for the updated challenge" do
+        challenge_response = json_response
+        expect(challenge_response[:challenge][:description]).to eql("Updated description")
+      end
+
+      it { should respond_with 200 }
+    end
+
+    # context "When not successfully updated" do
+    #   before(:each) do
+    #     patch :update, { user_id: @user.id, id: @challenge.id, challenge: { fake_key: "asdf" }}
+    #   end
+    #
+    #   it "should return an error json" do
+    #     challenge_response = json_response
+    #     expect(challenge_response).to have_key(:errors)
+    #   end
+    #
+    #   it { should respond_with 422 }
+    # end
+    #
+    # todo: update this section when I add validation
+    #
+  end
+
+  describe "DELETE #destroy" do
+    before(:each) do
+      @user = FactoryGirl.create(:user)
+      @challenge = FactoryGirl.create(:challenge, user: @user)
+      delete :destroy, { user_id: @user.id, id: @challenge.id }
+    end
+
+    it { should respond_with 202 }
   end
 
 end

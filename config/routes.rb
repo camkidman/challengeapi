@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api, { format: :json, constraints: { subdomain: 'api' }, path: '/'}  do
     scope module: :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       resources :users, only: [:show, :create, :update, :destroy] do
-        resources :challenges, only: [:create]
+        resources :challenges, only: [:create, :update, :destroy]
       end
       resources :challenges, only: [:show, :index]
     end
