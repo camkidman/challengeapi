@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150913021902) do
+ActiveRecord::Schema.define(version: 20151024013053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "challenges", force: :cascade do |t|
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "title"
     t.string   "description"
     t.integer  "user_id"
+    t.integer  "challenged_user_id"
   end
 
   add_index "challenges", ["user_id"], name: "index_challenges_on_user_id", using: :btree

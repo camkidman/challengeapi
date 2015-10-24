@@ -38,6 +38,6 @@ class Api::V1::ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:title, :description, :user_id)
+    params.require(:challenge).permit(:title, :description, :user_id, :challenged_user_id)
   end
 end
