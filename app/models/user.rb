@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :challenges
+
+  def unanswered_challenges
+    challenges.where("complete = ?", false)
+  end
 end

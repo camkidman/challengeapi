@@ -2331,8 +2331,10 @@
       <column name="title" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="description" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="user_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="challenged_user_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="complete" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7" def="ZmFsc2U="/>
       <primary-key name="challenges_pkey" columns="id"/>
-      <foreign-key name="fk_rails_f2f243fbb3" columns="user_id" ref-table="users" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rails_1cd1f4b28c" columns="user_id" ref-table="users" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="index_challenges_on_user_id" unique="false" columns="user_id"/>
     </table>
     <table name="challenges_id_seq" schema="public" catalog="challenge_app_development" type="SEQUENCE">
@@ -2370,7 +2372,7 @@
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <primary-key name="users_pkey" columns="id"/>
-      <exported-key name="fk_rails_f2f243fbb3" table="challenges" schema="public" catalog="challenge_app_development" columns="user_id"/>
+      <exported-key name="fk_rails_1cd1f4b28c" table="challenges" schema="public" catalog="challenge_app_development" columns="user_id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
       <index name="index_users_on_reset_password_token" unique="true" columns="reset_password_token"/>
     </table>
@@ -21219,8 +21221,10 @@
       <column name="title" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="description" sqlType="varchar" precision="2147483647" scale="0" nullable="true" jdbcType="12"/>
       <column name="user_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="challenged_user_id" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="complete" sqlType="bool" precision="1" scale="0" nullable="true" jdbcType="-7"/>
       <primary-key name="challenges_pkey" columns="id"/>
-      <foreign-key name="fk_rails_36cdddc02b" columns="user_id" ref-table="users" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_rails_4eeb0cba35" columns="user_id" ref-table="users" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <index name="index_challenges_on_user_id" unique="false" columns="user_id"/>
     </table>
     <table name="challenges_id_seq" schema="public" catalog="challenge_app_test" type="SEQUENCE">
@@ -21258,7 +21262,7 @@
       <column name="created_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <column name="updated_at" sqlType="timestamp" precision="29" scale="6" nullable="false" jdbcType="93"/>
       <primary-key name="users_pkey" columns="id"/>
-      <exported-key name="fk_rails_36cdddc02b" table="challenges" schema="public" catalog="challenge_app_test" columns="user_id"/>
+      <exported-key name="fk_rails_4eeb0cba35" table="challenges" schema="public" catalog="challenge_app_test" columns="user_id"/>
       <index name="index_users_on_email" unique="true" columns="email"/>
       <index name="index_users_on_reset_password_token" unique="true" columns="reset_password_token"/>
     </table>

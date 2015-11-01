@@ -11,8 +11,8 @@ RSpec.describe Api::V1::ChallengesController, type: :controller do
 
     it "returns the information about a reporter on a hash" do
       challenge_response = json_response
-      expect(challenge_response[:challenge][:description]).to eql @challenge.description
-      expect(challenge_response[:challenge][:title]).to eql @challenge.title
+      expect(challenge_response[:description]).to eql @challenge.description
+      expect(challenge_response[:title]).to eql @challenge.title
     end
 
     it { should respond_with 200 }
@@ -43,8 +43,8 @@ RSpec.describe Api::V1::ChallengesController, type: :controller do
 
       it "should render the JSON for the created challenge" do
         challenge_response = json_response
-        expect(challenge_response[:challenge][:description]).to eql @challenge_attributes[:description]
-        expect(challenge_response[:challenge][:title]).to eql @challenge_attributes[:title]
+        expect(challenge_response[:description]).to eql @challenge_attributes[:description]
+        expect(challenge_response[:title]).to eql @challenge_attributes[:title]
       end
     end
   end
@@ -63,7 +63,7 @@ RSpec.describe Api::V1::ChallengesController, type: :controller do
 
       it "should render the json for the updated challenge" do
         challenge_response = json_response
-        expect(challenge_response[:challenge][:description]).to eql("Updated description")
+        expect(challenge_response[:description]).to eql("Updated description")
       end
 
       it { should respond_with 200 }
